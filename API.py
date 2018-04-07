@@ -15,7 +15,7 @@ app = Flask(__name__)
 def CE290I_API():
     # here we want to get the value of user (i.e. ?user=some-value)
     date = request.args.get('date')
-    data_n = request.args.get('n')
+    data_n = int(request.args.get('n'))
     r = requests.get('https://ce290-hw5-weather-report.appspot.com/', params={'date': date})
     attributes = r.json()
     model = drone_path_planning_model(n=data_n, centroid_x=attributes['centroid_x'], centroid_y=attributes['centroid_y'], radius=attributes['radius'])
